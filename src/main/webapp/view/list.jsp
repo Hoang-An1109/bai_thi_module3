@@ -81,5 +81,19 @@
         document.querySelectorAll('.search-bar input').forEach(input => input.value = '');
     }
 </script>
+<script>
+    var urlParams = new URLSearchParams(window.location.search);
+    var successMessage = urlParams.get('success_add');
+    if (successMessage === 'true') {
+        alert('New product added successfully.');
+    }
+</script>
+<script>
+    var urlParams = new URLSearchParams(window.location.search);
+    var successMessage = urlParams.get('success_delete');
+    if (successMessage === 'true') {
+        alert('Product deleted successfully.');
+    }
+</script>
 </body>
 </html>

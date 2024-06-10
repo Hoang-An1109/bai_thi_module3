@@ -42,9 +42,6 @@ public class ProductService {
         requestDispatcher.forward(req, resp);
     }
 
-    public void rederPageEditProduct(HttpServletRequest req, HttpServletResponse resp, int id) {
-    }
-
     public void addNewProduct(HttpServletRequest req) throws SQLException {
         String productName = req.getParameter("nameProduct");
         Double price = Double.parseDouble(req.getParameter("price"));
@@ -61,8 +58,5 @@ public class ProductService {
 
     public void deleteProductById(int id) throws SQLException {
         productModel.deleteById(id);
-    }
-
-    public void updateProduct(HttpServletRequest req) {
     }
 }

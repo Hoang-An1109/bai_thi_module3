@@ -37,14 +37,6 @@ public class ProductController extends HttpServlet {
                     throw new RuntimeException(e);
                 }
                 break;
-//            case "/edit":
-//                try{
-//                    int id = Integer.parseInt(req.getParameter("ProductID"));
-//                    this.productService.rederPageEditProduct(req, resp, id);
-//                } catch (SQLException e) {
-//                    throw new RuntimeException(e);
-//                }
-//                break;
         }
     }
 
@@ -58,27 +50,18 @@ public class ProductController extends HttpServlet {
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
-                resp.sendRedirect(req.getContextPath() + "/product/list");
+                resp.sendRedirect(req.getContextPath() + "/product/list?success_add=true");
                 break;
 
             case "/delete":
                 try {
                     int id = Integer.parseInt(req.getParameter("idProduct"));
                     this.productService.deleteProductById(id);
-                    resp.sendRedirect(req.getContextPath() + "/product/list");
+                    resp.sendRedirect(req.getContextPath() + "/product/list?success_delete=true");
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
                 break;
-//
-//            case "/edit":
-//                try {
-//                    this.productService.updateProduct(req);
-//                    resp.sendRedirect(req.getContextPath() + "/product/list");
-//                } catch (SQLException e) {
-//                    throw new RuntimeException(e);
-//                }
-//                break;
         }
     }
 }

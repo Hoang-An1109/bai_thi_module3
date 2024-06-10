@@ -18,7 +18,7 @@
 <body>
 <div class="container">
     <h1>Add Product</h1>
-    <form class="form-group" action="${pageContext.request.contextPath}/product/create" method="post">
+    <form class="form-group" action="${pageContext.request.contextPath}/product/create" method="post" onsubmit="return validateForm()">
         <div class="form-group">
             <label>Product Name:</label>
             <input type="text" class="form-control" id="nameProduct" name="nameProduct" required>
@@ -68,5 +68,40 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+<script>
+    function validateForm() {
+        var productName = document.getElementById("nameProduct").value;
+        var price = document.getElementById("price").value;
+        var quantity = document.getElementById("quantity").value;
+        var color = document.getElementById("color").value;
+        var category = document.getElementById("nameCategory").value;
+
+        if (productName.trim() === "") {
+            alert("Tên sản phẩm không được để trống.");
+            return false;
+        }
+
+        if (isNaN(price) || price === "" || parseFloat(price) <= 10000000) {
+            alert("Giá không để trống và phải thỏa mãn lớn hơn 10.000.000 VNĐ.");
+            return false;
+        }
+
+        if (isNaN(quantity) || quantity === "" || parseInt(quantity) <= 0) {
+            alert("Số lượng không để trống và phải là số nguyên dương.");
+            return false;
+        }
+
+        if (color !== "Đỏ" && color !== "Xanh" && color !== "Đen" && color !== "Trắng" && color !== "Vàng") {
+            alert("Màu sắc phải có giá trị và là dropdown list bao gồm 'Đỏ' 'Xanh' 'Đen' 'Trắng' 'Vàng'.");
+            return false;
+        }
+
+        if (category === "") {
+            alert("Danh mục phải có giá trị.");
+            return false;
+        }
+        return true;
+    }
+</script>
 </body>
 </html>
